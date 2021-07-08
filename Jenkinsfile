@@ -2,15 +2,26 @@ pipeline {
     agent any
 
     stages {
+     stage("clean and compile"){
+        echo "clean and compile the project ..."
+        sh 'mvn clean compile'
+    }
+     stage("Unit test"){
+        echo "Run Unit test using maven.."
+        sh 'mvn test'
+    }
+     stage("package"){
+        echo "package the project.."
+        sh 'mvn package'
+    }
+     stage("Build docker image"){
+        echo "building the image using docker.."
+        sh 'docker build -t rajidocker2021/project .'
+    }
+    # stage("Build push image to docker hub"){
+    #    sh "docker login"
         
-        stage('clean and compile project') {
-            steps {
-                echo 'compile project..'
-                def mavenHome = tool name:"maven-3.0.5, type:maven"
-                def mavenCMD = "${ mavenHome }/bin/mvn"
-		sh '${mavenCMD} compile'
-            }
-        }
+    #}    
                  
     }
 }
