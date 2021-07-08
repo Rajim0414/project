@@ -2,23 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Validate') {
+        
+        stage('clean and compile project') {
             steps {
-                echo 'Validating..'
-		sh 'mvn compile'
+                echo 'compile project..'
+                def mavenHome = tool name:"maven-3.0.5, type:maven"
+                def mavenCMD = "${ mavenHome }/bin/mvn"
+		sh '${mavenCMD} compile'
             }
         }
-        stage('Unit Test') {
-            steps {
-                echo 'Testing..'
-		sh 'mvn test'
-            }
-        }
-        stage('Sonar Analysis') {
-            steps {
-                echo 'Analyzing....'
-		sh 'mvn sonar:sonar -Dsonar.host.url=http://54.208.136.107:9000 -Dsonar.login=fe6a18930c49cf4f2ad47779c47ea8bd1e217773'
-            }
-        }
+                 
     }
 }
