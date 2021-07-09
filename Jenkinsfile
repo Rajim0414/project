@@ -18,10 +18,6 @@ pipeline {
         echo "building the image using docker.."
         sh 'docker build -t rajidocker2021/project .'
     }
-    # stage("Build push image to docker hub"){
-    #    sh "docker login"
-        
-    #}    
                  
     }
 }
