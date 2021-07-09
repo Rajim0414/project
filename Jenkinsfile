@@ -26,6 +26,17 @@ pipeline {
         sh 'docker build -t rajidocker2021/project .'
       }
     }
+     stage("Docker push image to Docker hub"){
+       steps{
+          echo "push docker project image to Docker hub"
+          withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]) {
+    // some block
+          sh "docker login -u rajidocker2021 -p ${DOCKER_HUB_CREDENTIALS}"
+    }
+          sh "docker push rajidocker2021/project"
+
+     }
                  
     }
+   }
 }
