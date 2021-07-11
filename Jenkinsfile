@@ -36,7 +36,15 @@ pipeline {
           sh "docker push rajidocker2021/project"
 
      }
-                 
+      stage("Deploy application on k8s cluster"){
+       kubernetesDeploy(
+            configs: 'project_k8s_deploy_service.yml',
+            kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
+            enableConfigSubstitution: true
+            
+       )  
+       
+      }           
     }
    }
 }
