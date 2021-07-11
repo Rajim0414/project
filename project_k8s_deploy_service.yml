@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: webApp-service
+  name: webapp-service
 spec:
   type: LoadBalancer
   ports:
@@ -12,9 +12,9 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webApp-deployment
+  name: webapp-deployment
   labels: 
-    app: webCal-app
+    app: webcal-app
     tier: frontend
 spec:
   replicas: 4
@@ -27,7 +27,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - name: webCal
+      - name: webcal
         image: rajidocker2021/project
         ports:
         - containerPort: 80
