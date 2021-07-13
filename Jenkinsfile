@@ -41,7 +41,7 @@ pipeline {
        steps{
        sh '/usr/local/bin/kubectl get all'
        sh '/usr/local/bin/kubectl apply -f project_k8s_deploy_service.yml'
-       sh ''/usr/local/bin/kubectl rollout restart deployment.apps/webapp-deployment'
+       sh '/usr/local/bin/kubectl rollout restart deployment.apps/webapp-deployment'
        
 //       kubernetesDeploy(
  //           configs: 'project_k8s_deploy_service.yml',
