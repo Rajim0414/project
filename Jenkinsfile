@@ -40,6 +40,8 @@ pipeline {
       stage("Deploy application on k8s cluster"){
        steps{
        sh '/usr/local/bin/kubectl get all'
+       sh ''/usr/local/bin/kubectl apply -f project_k8s_deploy_service.yml"
+       
 //       kubernetesDeploy(
  //           configs: 'project_k8s_deploy_service.yml',
   //          kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
