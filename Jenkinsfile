@@ -39,13 +39,14 @@ pipeline {
      }
       stage("Deploy application on k8s cluster"){
        steps{
-       kubernetesDeploy(
-            configs: 'project_k8s_deploy_service.yml',
-            kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
-            enableConfigSubstitution: true
+       sh 'kubectl get all'
+//       kubernetesDeploy(
+ //           configs: 'project_k8s_deploy_service.yml',
+  //          kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
+  //          enableConfigSubstitution: true
        
             
-       )
+  //     )
        }  
       }
            
