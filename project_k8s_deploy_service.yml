@@ -6,6 +6,7 @@ spec:
   type: LoadBalancer
   ports:
   - port: 80
+    targetPort: 8080
   selector:
     tier: frontend
 ---
@@ -30,4 +31,4 @@ spec:
       - name: webcal
         image: rajidocker2021/project
         ports:
-        - containerPort: 80
+        - containerPort: 8080
